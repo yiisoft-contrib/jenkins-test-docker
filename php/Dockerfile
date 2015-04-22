@@ -31,7 +31,8 @@ RUN git clone https://github.com/php/php-src /opt/php/php-src
 RUN git checkout $PHP_VERSION  && \
     ./buildconf -f  && \
     ./configure --prefix=/opt/php/php-dist/$PHP_VERSION-custom $PHP_CONFIG  && \
-    make && make install
+    make && make install  && \
+    switchphp $PHP_VERSION-custom
 
 # Define mountable directories.
 VOLUME ["/opt/test"]
