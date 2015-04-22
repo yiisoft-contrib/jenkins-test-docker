@@ -23,7 +23,15 @@ RUN \
   curl -sS https://getcomposer.org/installer | php && \
   ln -s composer.phar composer
 
-# TODO install php and switch
+ENV PHP_VERSION master
+ENV PHP_CONFIG 
+
+# build php and switch
+RUN git clone https://github.com/php/php-src /opt/php/php-src
+RUN git checkout $PHP_VERSION  && \
+    ./buildconf -f  && \
+    ./configure --prefix=/opt/php/php-dist/$PHP_VERSION-custom $PHP_CONFIG  && \
+    make && make install
 
 # Define mountable directories.
 VOLUME ["/opt/test"]
