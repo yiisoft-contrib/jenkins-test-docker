@@ -15,6 +15,7 @@ RUN \
 # install php5-cli and php-dev to have php enabled by default, switchphp can be used to switch to a self-compiled version
 ADD switchphp /usr/bin/switchphp
 RUN \
+  chmod +x /usr/bin/switchphp  && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y php5-cli php5-dev
 
 # install composer
