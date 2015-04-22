@@ -27,8 +27,8 @@ RUN \
   ln -s /root/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
 
 
-ENV PHP_VERSION master
-ENV PHP_CONFIG 
+ENV PHP_VERSION=master
+ENV PHP_CONFIG=
 
 # build php and switch
 RUN git clone https://github.com/php/php-src /opt/php/php-src
