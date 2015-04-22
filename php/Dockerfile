@@ -35,7 +35,7 @@ ENV PHP_CONFIG="--with-config-file-path=/opt/php/php-dist/$PHP_VERSION-custom/et
 RUN git clone https://github.com/php/php-src /opt/php/php-src
 RUN cd /opt/php/php-src  && \
     git checkout $PHP_VERSION  && \
-    ./buildconf -f  && \
+    ./buildconf --force  && \
     ./configure --prefix=/opt/php/php-dist/$PHP_VERSION-custom $PHP_CONFIG  && \
     make && make install  && \
     switchphp $PHP_VERSION-custom
