@@ -33,7 +33,7 @@ ENV PHP_CONFIG="--with-config-file-path=/opt/php/php-dist/$PHP_VERSION-custom/et
 
 # build php and switch php version
 RUN git clone https://github.com/php/php-src /opt/php/php-src
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssl
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssl libssl-dev
 RUN cd /opt/php/php-src  && \
     git checkout $PHP_VERSION  && \
     ./buildconf --force  && \
