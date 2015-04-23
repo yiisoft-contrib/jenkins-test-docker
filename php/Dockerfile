@@ -29,7 +29,8 @@ RUN \
 
 
 ENV PHP_VERSION=master
-ENV PHP_CONFIG="--with-config-file-path=/opt/php/php-dist/$PHP_VERSION-custom/etc --with-openssl"
+# https://bugs.php.net/bug.php?id=69510
+ENV PHP_CONFIG="--with-config-file-path=/opt/php/php-dist/$PHP_VERSION-custom/etc --with-openssl --with-libdir=lib/x86_64-linux-gnu"
 
 # build php and switch php version
 RUN git clone https://github.com/php/php-src /opt/php/php-src
