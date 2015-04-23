@@ -10,7 +10,7 @@ FROM debian:wheezy
 RUN \
   DEBIAN_FRONTEND=noninteractive apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y git curl build-essential autoconf bison re2c libxml2-dev
+  DEBIAN_FRONTEND=noninteractive apt-get install -y git curl build-essential pkg-config autoconf bison re2c libxml2-dev
 
 # install php5-cli and php-dev to have php enabled by default, switchphp can be used to switch to a self-compiled version
 ADD switchphp /usr/bin/switchphp
@@ -30,7 +30,7 @@ RUN \
 
 ENV PHP_VERSION=master
 # https://bugs.php.net/bug.php?id=69510
-ENV PHP_CONFIG="--with-config-file-path=/opt/php/php-dist/$PHP_VERSION-custom/etc --with-openssl --with-libdir=lib/x86_64-linux-gnu"
+ENV PHP_CONFIG="--with-config-file-path=/opt/php/php-dist/$PHP_VERSION-custom/etc --with-openssl"
 
 # build php and switch php version
 RUN git clone https://github.com/php/php-src /opt/php/php-src
