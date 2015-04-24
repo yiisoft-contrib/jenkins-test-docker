@@ -73,7 +73,7 @@ arch-chroot $ROOTFS /bin/sh -c 'echo "Server = https://mirrors.kernel.org/archli
 # configure oracle
 arch-chroot $ROOTFS /bin/sh -c 'echo -e "\n\nyiitest\nyiitest\nn\n" | /etc/rc.d/oracle-xe configure'
 
-cat > $ROOTFS/tmp/createuser_yiitest.sql <<< EOF
+cat > $ROOTFS/tmp/createuser_yiitest.sql << EOF
 CREATE USER "YIITEST" IDENTIFIED BY 'yiitest' DEFAULT TABLESPACE "USERS" TEMPORARY TABLESPACE "TEMP";
 GRANT "CONNECT" TO "YIITEST";
 GRANT "RESOURCE" TO "YIITEST";
@@ -88,7 +88,7 @@ GRANT UNLIMITED TABLESPACE TO "YIITEST";
 GRANT CREATE SESSION TO "YIITEST";
 GRANT ALTER SYSTEM TO "YIITEST";
 EOF
-arch-chroot $ROOTFS /bin/su oracle -c 'cat /tmp/createuser_yiitest.sql | ORACLE_HOME=/usr/lib/oracle/product/11.2.0/xe sqplus -s / as sysdba'
+arch-chroot $ROOTFS /bin/su oracle -c 'cat /tmp/createuser_yiitest.sql | ORACLE_HOME=/usr/lib/oracle/product/11.2.0/xe sqlplus -s / as sysdba'
 
 # udev doesn't work in containers, rebuild /dev
 DEV=$ROOTFS/dev
