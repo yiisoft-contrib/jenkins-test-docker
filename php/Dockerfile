@@ -24,7 +24,7 @@ RUN \
   curl -sS https://getcomposer.org/installer | php  && \
   ln -s composer.phar composer
 RUN \
-  composer global require "fxp/composer-asset-plugin:1.0.0" "phpunit/phpunit"  && \
+  composer global require "fxp/composer-asset-plugin:~1.0.0" "phpunit/phpunit"  && \
   ln -s /root/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
 
 
