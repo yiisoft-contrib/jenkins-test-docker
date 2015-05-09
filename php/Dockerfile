@@ -10,7 +10,7 @@ FROM debian:wheezy
 RUN \
   DEBIAN_FRONTEND=noninteractive apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y git curl build-essential pkg-config autoconf bison re2c libxml2-dev
+  DEBIAN_FRONTEND=noninteractive apt-get install -y git curl vim build-essential pkg-config autoconf bison re2c libxml2-dev
 
 # install php5-cli and php-dev to have php enabled by default, switchphp can be used to switch to a self-compiled version
 ADD switchphp /usr/bin/switchphp
