@@ -42,6 +42,8 @@ RUN cd /opt/php/php-src  && \
     make && make install  && \
     switchphp $PHP_VERSION-custom
 
+ADD php.ini /opt/php/php-dist/$PHP_VERSION-custom/etc/php.ini
+
 # Define mountable directories.
 VOLUME ["/opt/test"]
 WORKDIR /opt/test
