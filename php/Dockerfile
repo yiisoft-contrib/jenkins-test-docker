@@ -16,7 +16,7 @@ RUN \
 ADD switchphp /usr/bin/switchphp
 RUN \
   chmod +x /usr/bin/switchphp  && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y php5-cli php5-dev
+  DEBIAN_FRONTEND=noninteractive apt-get install -y php5-cli php5-dev php5-curl
 
 # install composer
 RUN \
