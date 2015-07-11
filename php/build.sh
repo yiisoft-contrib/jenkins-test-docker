@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 if (docker images | grep -P "yiitest/php-base\s+latest"); then
     echo "base docker image for php already exists"
