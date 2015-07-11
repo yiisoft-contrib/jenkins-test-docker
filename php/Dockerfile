@@ -13,7 +13,7 @@ RUN cd /opt/php/php-src  && \
 
 # build php and switch php version
 RUN cd /opt/php/php-src  && \
-    rm configure  && \
+    (rm configure || echo "no configure")  && \
     ./buildconf --force  && \
     ./configure --prefix=/opt/php/php-dist/$PHP_VERSION-custom $PHP_CONFIG  && \
     make && make install  && \

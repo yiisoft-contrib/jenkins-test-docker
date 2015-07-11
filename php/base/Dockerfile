@@ -29,7 +29,7 @@ RUN \
 
 # prepare php build
 RUN git clone https://github.com/php/php-src /opt/php/php-src
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y php5-dev openssl libssl-dev libicu-dev libmcrypt-dev libreadline-dev libbz2-dev libcurl4-openssl-dev libjpeg8-dev libpng12-dev libfreetype6-dev libmm-dev libpq-dev libmagickcore-dev libgraphicsmagick1-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y php5-dev openssl libssl-dev libicu-dev libmcrypt-dev libreadline-dev libbz2-dev libcurl4-openssl-dev libjpeg8-dev libpng12-dev libfreetype6-dev libmm-dev libpq-dev libmagickcore-dev libgraphicsmagick1-dev libmagickwand-dev
 
 # add imagick extension
 RUN cd /opt/php/php-src/ext  && \
@@ -40,7 +40,7 @@ RUN cd /opt/php/php-src/ext  && \
 
 # add gmagick extension
 RUN cd /opt/php/php-src/ext  && \
-    pecl download gmagick  && \
+    pecl download gmagick-1.1.7RC3  && \
     mv gmagick*.tgz gmagick.tgz  && \
     gzip -d < gmagick.tgz | tar -xvf -  && \
     mv gmagick-* gmagick
