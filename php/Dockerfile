@@ -28,12 +28,12 @@ RUN \
   ln -s /root/.composer/vendor/bin/phpunit /usr/local/bin/phpunit
 
 
-ENV PHP_VERSION=master
+ENV PHP_VERSION master
 ENV PHP_CONFIG="--with-config-file-path=/opt/php/php-dist/$PHP_VERSION-custom/etc --with-openssl --without-pear --with-pcre-regex --with-openssl --with-kerberos --with-zlib --with-bz2 --enable-zip --enable-bcmath --with-mcrypt --with-curl --enable-ftp --with-gd --enable-exif --with-jpeg-dir --with-png-dir --with-freetype-dir --enable-intl --enable-mbstring --with-gettext --with-mysqli --with-pdo-mysql --with-mm --enable-soap --with-readline --enable-opcache --with-pdo-mysql --with-pdo-sqlite --with-pdo-pgsql --with-imagick --with-gmagick"
 
 # prepare php build
 RUN git clone https://github.com/php/php-src /opt/php/php-src
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y openssl libssl-dev libicu-dev libmcrypt-dev libreadline-dev libbz2-dev libcurl4-openssl-dev libjpeg8-dev libpng12-dev libfreetype6-dev libmm-dev libpq-dev libmagickcore-dev libgraphicsmagick1-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y php5-dev openssl libssl-dev libicu-dev libmcrypt-dev libreadline-dev libbz2-dev libcurl4-openssl-dev libjpeg8-dev libpng12-dev libfreetype6-dev libmm-dev libpq-dev libmagickcore-dev libgraphicsmagick1-dev
 RUN cd /opt/php/php-src  && \
     git checkout $PHP_VERSION
 
