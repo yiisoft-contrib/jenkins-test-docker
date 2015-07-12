@@ -22,8 +22,8 @@ export LIBPATH
 export PATH
 
 # put databases in a tmpfs
-mkdir -p $CUBRID_DATABASES
-mount -t tmpfs -o size=1G,nr_inodes=10k,mode=0700 tmpfs $CUBRID_DATABASES
+#mkdir -p $CUBRID_DATABASES
+#mount -t tmpfs -o size=1G,nr_inodes=10k,mode=0700 tmpfs $CUBRID_DATABASES
 
 # start cubrid
 echo "starting cubrid..."
