@@ -10,11 +10,13 @@ fi
 if (docker images | grep -P "yiitest/php\s+$PHP_VERSION"); then
     echo "docker for php $PHP_VERSION already exists"
 else
-    if [ "$_PHP_VERSION" == "master" ] ; then
-        PHP_CONFIG="--with-openssl --without-pear --with-pcre-regex --with-openssl --with-kerberos --with-zlib --with-bz2 --enable-zip --enable-bcmath --with-mcrypt --with-curl --enable-ftp --with-gd --enable-exif --with-jpeg-dir --with-png-dir --with-freetype-dir --enable-intl --enable-mbstring --with-gettext --with-mysqli --with-pdo-mysql --with-mm --enable-soap --with-readline --enable-opcache --with-pdo-mysql --with-pdo-sqlite --with-pdo-pgsql --with-imagick"
+    if [ "$PHP_VERSION" = "master" ] ; then
+        PHP_CONFIG="--with-openssl --without-pear --with-pcre-regex --with-openssl --with-kerberos --with-zlib --with-bz2 --enable-zip --enable-bcmath --with-mcrypt --with-curl --enable-ftp --with-gd --enable-exif --with-jpeg-dir --with-png-dir --with-freetype-dir --enable-intl --enable-mbstring --with-gettext --with-mysqli --with-pdo-mysql --with-mm --enable-soap --with-readline --enable-opcache --with-pdo-mysql --with-pdo-sqlite --with-pdo-pgsql "
        # exclude --with-gmagick which does not compile on php7 https://bugs.php.net/bug.php?id=70049
+       # exclude --with-imagick which is broken too
     else
-        PHP_CONFIG="--with-openssl --without-pear --with-pcre-regex --with-openssl --with-kerberos --with-zlib --with-bz2 --enable-zip --enable-bcmath --with-mcrypt --with-curl --enable-ftp --with-gd --enable-exif --with-jpeg-dir --with-png-dir --with-freetype-dir --enable-intl --enable-mbstring --with-gettext --with-mysqli --with-pdo-mysql --with-mm --enable-soap --with-readline --enable-opcache --with-pdo-mysql --with-pdo-sqlite --with-pdo-pgsql --with-imagick --with-gmagick"
+        PHP_CONFIG="--with-openssl --without-pear --with-pcre-regex --with-openssl --with-kerberos --with-zlib --with-bz2 --enable-zip --enable-bcmath --with-mcrypt --with-curl --enable-ftp --with-gd --enable-exif --with-jpeg-dir --with-png-dir --with-freetype-dir --enable-intl --enable-mbstring --with-gettext --with-mysqli --with-pdo-mysql --with-mm --enable-soap --with-readline --enable-opcache --with-pdo-mysql --with-pdo-sqlite --with-pdo-pgsql --with-imagick"
+       # exclude --with-gmagick as it does not compile on php5 either?
     fi
 
     echo "building docker for php $PHP_VERSION."
