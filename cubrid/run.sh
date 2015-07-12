@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 
 ld_lib_path=`printenv LD_LIBRARY_PATH` || echo "LD_LIBRARY_PATH is empty"
@@ -32,3 +32,4 @@ cubrid service start || echo "starting CUBRID services failed with exit code $?"
 $CUBRID/demo/make_cubrid_demo.sh || echo "setting up CUBRID demodb failed with exit code $?"
 cubrid server start demodb || (echo "starting CUBRID demodb failed with exit code $?" && cat demodb_loaddb.log)
 
+tail -f demodb_loaddb.log
