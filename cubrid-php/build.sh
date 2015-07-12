@@ -3,9 +3,9 @@
 if [ "$CUBRID_PDO_VERSION" = "9.3" ] ; then
 	CUBRID_PDO_BUILD=9.3.0.0001
 elif [ "$CUBRID_PDO_VERSION" = "9.2" ] ; then
-	CUBRID_PDO_BUILD=
+	CUBRID_PDO_BUILD=9.2.0.0001
 elif [ "$CUBRID_PDO_VERSION" = "8.4" ] ; then
-	CUBRID_PDO_BUILD=
+	CUBRID_PDO_BUILD=8.4.3.0001
 else
 	echo "unknown CUBID PDO version."
 	exit 1

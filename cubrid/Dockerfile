@@ -23,6 +23,7 @@ ENV CUBRID_DATABASES=$CUBRID/databases
 ENV CUBRID_LANG=en_US
 
 ADD run.sh /opt/cubrid/run.sh
+RUN chmod +x /opt/cubrid/run.sh
 
 EXPOSE 33000
 WORKDIR /opt/cubrid
