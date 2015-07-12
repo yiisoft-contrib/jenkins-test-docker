@@ -15,7 +15,7 @@ RUN \
 RUN \
   mkdir -p /opt/cubrid  && \
   cd /opt/cubrid  && \
-  curl -sSL "http://ftp.cubrid.org/CUBRID_Engine/$CUBRID_VERSION-linux.x86_64.tar.gz" -o cubrid.tar.gz  && \
+  curl -SL "http://ftp.cubrid.org/CUBRID_Engine/$CUBRID_VERSION-linux.x86_64.tar.gz" -o cubrid.tar.gz  && \
   tar xzf cubrid.tar.gz
 
 ENV CUBRID /opt/cubrid/CUBRID
