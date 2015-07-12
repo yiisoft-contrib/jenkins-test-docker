@@ -1,15 +1,17 @@
 #!/bin/sh
 
 if [ "$CUBRID_VERSION" = "9.3" ] ; then
-	CUBRID_BUILD=9.3/CUBRID-9.3.2.0016
+	CUBRID_BUILD=9.3\\/CUBRID-9.3.2.0016
 elif [ "$CUBRID_VERSION" = "9.2" ] ; then
-	CUBRID_BUILD=9.2/CUBRID-9.2.20.0003
+	CUBRID_BUILD=9.2\\/CUBRID-9.2.20.0003
 elif [ "$CUBRID_VERSION" = "8.4" ] ; then
-	CUBRID_BUILD=8.4.4/CUBRID-8.4.4.13002
+	CUBRID_BUILD=8.4.4\\/CUBRID-8.4.4.13002
 else
 	echo "unknown CUBID version, go to http://ftp.cubrid.org/CUBRID_Engine/ and check for the build you need, then edit this file."
 	exit 1
 fi
+
+echo "CUBRID BUILD: $CUBRID_BUILD"
 
 
 if (docker images | grep -P "yiitest/cubrid\s+$CUBRID_VERSION"); then
